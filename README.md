@@ -24,7 +24,7 @@
 1. 저장소를 클론합니다:
 
    ```bash
-   git clone https://github.com/your/repository.git
+   git clone https://github.com/kji0205/tos-web.git
    cd backend
 
 ### 프론트엔드 (Vue.js)
