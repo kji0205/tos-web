@@ -1,0 +1,33 @@
+### Send POST request with json body
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "우유",
+  "description": "content",
+  "price": 20000
+}
+
+
+### Send POST request with body as parameters
+POST http://localhost:8080/api/products
+Content-Type: application/x-www-form-urlencoded
+
+name=우유&description=content&price=20000
+
+
+### POST 요청: 새 제품 생성
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "새로운 제품",
+  "description": "이 제품은 테스트 용도로 생성됩니다.",
+  "price": 99.99
+}
+
+### GET request with a header
+GET http://localhost:8080/api/products
+Accept: application/json
+
+
