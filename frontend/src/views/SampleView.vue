@@ -22,6 +22,11 @@ watchEffect(async () => {
 
 const insert = async () => {
 
+  if (!(name.value && description.value && price.value)) {
+    alert('입력값 확인')
+    return;
+  }
+
   // POST request using fetch with async/await
   const requestOptions = {
     method: "POST",
@@ -36,16 +41,44 @@ const insert = async () => {
 </script>
 
 <template>
-  <h1>Sample Component</h1>
   <div>
-    name: <input type="text" v-model="name">
-    &nbsp;description: <input type="text" v-model="description">
-    &nbsp;price: <input type="text" v-model="price">
-    &nbsp;<button @click="insert">추가</button>
-  </div>
-  <div>
-    <ul v-if="product.length">
-      <li v-for="item of product">{{ item }}</li>
-    </ul>
+    <div class="pa-6">
+      <v-text-field label="name" v-model="name"/>
+      <v-text-field label="description" v-model="description"/>
+      <v-text-field label="price" v-model="price"/>
+      <v-btn @click="insert">
+        상품 추가
+      </v-btn>
+    </div>
+
+    <v-divider></v-divider>
+
+    <div class="pa-6">
+      <v-table>
+        <thead>
+        <tr>
+          <th class="text-left">
+            Name
+          </th>
+          <th class="text-left">
+            description
+          </th>
+          <th class="text-left">
+            price
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr
+            v-for="item of product"
+            :key="item.id"
+        >
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.price }}</td>
+        </tr>
+        </tbody>
+      </v-table>
+    </div>
   </div>
 </template>
