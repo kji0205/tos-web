@@ -4,7 +4,7 @@ import SampleView from "@/views/SampleView.vue";
 
 <template>
   <v-layout class="rounded rounded-md">
-    <v-app-bar title="Application bar"></v-app-bar>
+    <v-app-bar title="Together School"></v-app-bar>
 
     <v-navigation-drawer>
       <v-list>

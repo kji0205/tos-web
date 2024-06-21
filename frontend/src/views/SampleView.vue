@@ -41,18 +41,20 @@ const insert = async () => {
 </script>
 
 <template>
-  <div>
-    <div class="pa-6">
-      <v-text-field label="name" v-model="name"/>
-      <v-text-field label="description" v-model="description"/>
-      <v-text-field label="price" v-model="price"/>
+  <v-container fluid>
+
+    <div class="">
+      <v-text-field label="name" v-model="name" />
+      <v-text-field label="description" v-model="description" />
+      <v-text-field label="price" v-model="price" />
       <v-btn @click="insert">
         상품 추가
       </v-btn>
     </div>
-
-    <v-divider></v-divider>
-
+    <div class="ma-6"></div>
+    <p class="font-weight-black">
+      Product List.
+    </p>
     <div class="pa-6">
       <v-table>
         <thead>
@@ -80,5 +82,5 @@ const insert = async () => {
         </tbody>
       </v-table>
     </div>
-  </div>
+  </v-container>
 </template>
