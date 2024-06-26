@@ -27,6 +27,10 @@
    git clone https://github.com/kji0205/tos-web.git
    cd backend
 
+2. swagger
+   ```
+   http://localhost:8080/swagger-ui/index.html
+
 ### 프론트엔드 (Vue.js)
 
 1. 저장소를 클론합니다:

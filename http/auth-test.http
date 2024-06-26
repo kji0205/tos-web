@@ -1,0 +1,110 @@
+### root page
+GET http://localhost:8080/
+Accept: application/json
+
+<> 2024-06-25T180437.200.html
+<> 2024-06-25T180416.200.html
+<> 2024-06-25T180242.200.html
+<> 2024-06-25T180215.200.html
+<> 2024-06-25T180010.200.html
+<> 2024-06-25T175703.200.html
+<> 2024-06-25T175638.200.html
+<> 2024-06-25T175613.200.html
+<> 2024-06-25T175556.200.html
+<> 2024-06-25T175347.200.html
+<> 2024-06-25T174653.200.html
+<> 2024-06-25T174614.200.html
+<> 2024-06-25T174444.200.html
+<> 2024-06-25T173949.200.html
+<> 2024-06-25T173927.200.html
+<> 2024-06-25T173903.200.html
+<> 2024-06-25T173333.200.html
+<> 2024-06-25T172356.200.html
+
+### index page
+GET http://localhost:8080/index
+Accept: application/json
+
+<> 2024-06-25T175350.200.json
+<> 2024-06-25T173330.200.json
+<> 2024-06-25T172335.200.json
+
+### join page
+GET http://localhost:8080/join
+Accept: application/json
+
+### private page
+GET http://localhost:8080/private
+Accept: application/json
+
+### public
+GET http://localhost:8080/public
+Accept: application/json
+
+
+### /api/member
+GET http://localhost:8080/api/member
+Accept: application/json
+
+<> 2024-06-26T142045.401.json
+
+
+### signup
+POST {{domain}}/api/member/signup
+Content-Type: application/json
+
+{
+  "memberId": "test01",
+  "password": "1234",
+  "email": "test01@example.com"
+}
+
+<> 2024-06-26T153005.200.json
+<> 2024-06-26T152925.500.json
+<> 2024-06-26T152837.500.json
+<> 2024-06-26T145553.200.json
+<> 2024-06-26T145049.403.json
+<> 2024-06-26T144703.401.json
+<> 2024-06-26T144131.401.json
+<> 2024-06-26T144114.401.json
+<> 2024-06-26T144048.401.json
+
+### signin
+POST {{domain}}/api/member/login
+Content-Type: application/json
+
+{
+  "memberId": "test01",
+  "password": "1234"
+}
+
+> {%
+client.test("Validate", function() { // Validate라는 이름의 테스트를 수행
+    client.log("AUTH TEST")
+    client.log(response.body.result.accessToken)
+    client.assert(response.status === 200, "Response status is not 200"); // 응답값이 200이면 통과
+    client.assert(response.contentType.mimeType === "application/json", "Expected 'application/json'"); // 응답값이 application/json이면 통과
+    client.assert(response.body.result.accessToken.trim().length > 0); // 토큰 길이가 0보다 크면 통과
+});
+
+client.log(response.body.result.accessToken); // 토큰 값 로깅, body에는 응답받은 json이 객체 형식으로 저장된다. 즉 { accessToken:"value" }가 응답이라면, 여기선 value라 로깅된다.
+client.global.set("access_token",response.body.result.accessToken) // 토큰 값을 global 변수에 set
+%}
+
+<> 2024-06-26T153404.200.json
+<> 2024-06-26T153304.500.json
+<> 2024-06-26T153056.500.json
+<> 2024-06-26T153038.500.json
+<> 2024-06-26T152733.401.json
+<> 2024-06-26T152555.401.json
+<> 2024-06-26T152434.401.json
+<> 2024-06-26T152401.401.json
+<> 2024-06-26T152226.401.json
+<> 2024-06-26T152103.401.json
+<> 2024-06-26T150621.415.txt
+<> 2024-06-26T150558.415.txt
+
+### 내 정보 확인
+GET {{domain}}/api/member
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
